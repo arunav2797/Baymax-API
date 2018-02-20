@@ -7,6 +7,7 @@ const router = express.Router();
 const app = express();
 const server = http.createServer(app);
 const symptms = require('../models/symptom');
+const categories = require('../models/categories');
 const io = require('socket.io').listen(server);
 
 const services = require('../services/index');
@@ -21,6 +22,11 @@ router.get('/symptoms', (req, res) => {
     const symps = symptms.symptoms;
     console.log(symps.length);
     res.json({symptoms: symps});
+});
+
+router.get('/categories', (req, res) => {
+    const symps = categories;
+    res.json({symptoms: categories.categories.symptoms});
 });
 
 router.get('/diseases', (req, res) => {
