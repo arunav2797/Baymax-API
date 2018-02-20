@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sockets</title>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+</head>
+<body>
+    <h2>Sockets for AmbySure</h2>
+    <p id="message1">Received message goes here</p>
+
+
+    <button onclick="emitevent()">Click here to emit event</button>
+
+    <script type="text/javascript">
+
+        var socket = io.connect('http://localhost:3000/');
+
+        socket.on('Error', function (data) {
+           document.getElementById("message1").innerHTML = data.err;
+           console.log(data.err.type)
+        });
+
+        function emitevent(){
+            socket.emit('update', {disease: 'Malaria'});
+        }
+        
+
+        socket.on('update', function(data){
+            document.getElementById("message1").innerHTML = data.message;
+        });
+        
+
+    </script>
+</body>
+</html>
