@@ -107,7 +107,7 @@ io.sockets.on('connection', function(socket){
 });
 
 server.listen(5001, function(){
-    console.log('Socket server running succesfully on port 3000');
+    console.log('Socket server running succesfully on port 5001');
 });
 
 module.exports = router;
